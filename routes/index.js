@@ -19,84 +19,81 @@ router.post('/calc', function(req, res, next) {
   var MonthlyProductSales = 10;
   var ProductSalesGrowth = 0.15;
 
-  var Dec = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyProductSales*(1+ProductSalesGrowth))));
-  var Nov = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((11-1)/11)*(Dec-MonthlyProductSales)))))
-  var Oct = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((10-1)/11)*(Dec-MonthlyProductSales)))))
-  var Sep = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((9-1)/11)*(Dec-MonthlyProductSales)))))
-  var Aug = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((8-1)/11)*(Dec-MonthlyProductSales)))))
-  var Jul = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((7-1)/11)*(Dec-MonthlyProductSales)))))
-  var Jun = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((6-1)/11)*(Dec-MonthlyProductSales)))))
-  var May = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((5-1)/11)*(Dec-MonthlyProductSales)))))
-  var Apr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((4-1)/11)*(Dec-MonthlyProductSales)))))
-  var Mar = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((3-1)/11)*(Dec-MonthlyProductSales)))))
-  var Feb = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((2-1)/11)*(Dec-MonthlyProductSales)))))
-  var Jan = MonthlyProductSales;
-
-  var PDec = formulajs.IFERROR(formulajs.ROUNDUP(MonthlyProductSales*(1+ProductSalesGrowth),0),"")
-  var SDec = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyProductSales*(1+ProductSalesGrowth),0),"")
-  console.log(PDec, SDec);
-  var ProductUnitSold = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
-  var ProductRevenue = (ProductUnitSold*PricePerProduct)
+  var Decpr = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyProductSales*(1+ProductSalesGrowth))));
+  var Novpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((11-1)/11)*(Dec-MonthlyProductSales)))))
+  var Octpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((10-1)/11)*(Dec-MonthlyProductSales)))))
+  var Seppr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((9-1)/11)*(Dec-MonthlyProductSales)))))
+  var Augpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((8-1)/11)*(Dec-MonthlyProductSales)))))
+  var Julpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((7-1)/11)*(Dec-MonthlyProductSales)))))
+  var Junpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((6-1)/11)*(Dec-MonthlyProductSales)))))
+  var Maypr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((5-1)/11)*(Dec-MonthlyProductSales)))))
+  var Aprpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((4-1)/11)*(Dec-MonthlyProductSales)))))
+  var Marpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((3-1)/11)*(Dec-MonthlyProductSales)))))
+  var Febpr = formulajs.IFERROR(formulajs.ROUNDDOWN(((MonthlyProductSales+((2-1)/11)*(Dec-MonthlyProductSales)))))
+  var Janpr = MonthlyProductSales;
   
+  var ProductUnitSold = formulajs.SUM([Janpr, Febpr, Marpr, Aprpr, Maypr, Junpr, Julpr, Augpr, Seppr, Octpr, Novpr, Decpr])
+  var ProductRevenue = (ProductUnitSold*PricePerProduct)
   console.log("Product Unit Sold: " + ProductUnitSold);
   console.log("Product Revenue: " + ProductRevenue+ "\n");
 
 
 
 
-  // //*Service Revenue
+  //*Service Revenue
   // Values from req.body.
   var PricePerService = 100;
   var MonthlyServiceSales = 15;
   var SerciceSalesGrowth = 0.45; 
 
-  var Dec = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyServiceSales*(1+SerciceSalesGrowth))))
-  var Nov = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((11-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Oct = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((10-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Sep = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((9-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Aug = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((8-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Jul = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((7-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Jun = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((6-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var May = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((5-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Apr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((4-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Mar = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((3-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Feb = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((2-1)/11)*(Dec-MonthlyServiceSales),0),"")
-  var Jan = MonthlyServiceSales
+  var Decsr = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyServiceSales*(1+SerciceSalesGrowth))))
+  var Novsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((11-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Octsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((10-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Sepsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((9-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Augsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((8-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Julsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((7-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Junsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((6-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Maysr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((5-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Aprsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((4-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Marsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((3-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Febsr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales+((2-1)/11)*(Dec-MonthlyServiceSales),0),"")
+  var Jansr = MonthlyServiceSales
 
-  var ServiceUnitsSold = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
+  var ServiceUnitsSold = formulajs.SUM([Jansr, Febsr, Marsr, Aprsr, Maysr, Junsr, Julsr, Augsr, Sepsr, Octsr, Novsr, Decsr])
+
   var ServiceRevenues = (ServiceUnitsSold*PricePerService)
   console.log("Service Unit Sold: " + ServiceUnitsSold);
   console.log("Service Revenues: " + ServiceRevenues + "\n");
 
 
 
-  // //* Billable Hours Revenue
+  //* Billable Hours Revenue
   // Values from req.body.
   var RatePerHour = 150;
   var BillableHoursPerMonth = 45;
   var BillableHoursGrowth = 0.3;
 
-  var Dec = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth*(1+BillableHoursGrowth),1),"")
-  var Nov = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((11-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Oct = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((10-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Sep = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((9-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Aug = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((8-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Jul = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((7-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Jun = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((6-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var May = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((5-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Apr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((4-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Mar = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((3-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Feb = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((2-1)/11)*(Dec-BillableHoursPerMonth),1),"")
-  var Jan = BillableHoursPerMonth
+  var Decbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth*(1+BillableHoursGrowth),1),"")
+  var Novbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((11-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Octbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((10-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Sepbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((9-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Augbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((8-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Julbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((7-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Junbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((6-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Maybr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((5-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Aprbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((4-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Marbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((3-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Febbr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth+((2-1)/11)*(Dec-BillableHoursPerMonth),1),"")
+  var Janbr = BillableHoursPerMonth
 
-  var TotalBillableHoursPerMonth = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
+  var TotalBillableHoursPerMonth = formulajs.SUM([Janbr, Febbr, Marbr, Aprbr, Maybr, Junbr, Julbr, Augbr, Sepbr, Octbr, Novbr, Decbr])
   var BillableHoursRevenues = (TotalBillableHoursPerMonth*RatePerHour)
   console.log("Total Billable Hours Per Month: "+TotalBillableHoursPerMonth)
   console.log("Billable Hour Revenues: "+BillableHoursRevenues+"\n")
 
 
 
-  // //* Subscription Revenue
+  //* Subscription Revenue
   // Values from req.body.
   var SetUpFee = 20;
   var RecurringCharge = 11;
@@ -143,9 +140,192 @@ router.post('/calc', function(req, res, next) {
   var TotalSalesRevenue = formulajs.SUM([ProductRevenue, ServiceRevenues, BillableHoursRevenues, SubscriptionRevenues])
   console.log("Total Sales Revenue: "+TotalSalesRevenue+ "\n\n");
 
+    //? ------ ---------------------DIRECT COST-----------------------------------------------
+
+    var CostofGoodsSoldforProductRevenues = 0.03;
+    var CostofGoodsSoldforServiceRevenues =0.03;
+    var CostofGoodsSoldforBillableHoursRevenues=0.05;
+    var CostofGoodsSoldforSubscriptionRevenues = 0.06;
+
+    // Cost of Goods Sold for Product Revenues
+
+    var Jangspr = ((Janpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Febgspr = ((Febpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Margspr = ((Marpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Aprgspr = ((Aprpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Maygspr = ((Maypr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Jungspr = ((Junpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Julgspr = ((Julpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Auggspr = ((Augpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Sepgspr = ((Seppr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Octgspr = ((Octpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Novgspr = ((Novpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+    var Decgspr = ((Decpr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+
+    var SumCostofGoodsSoldforProductRevenues = formulajs.SUM([Jangspr, Febgspr, Margspr, Aprgspr, Maygspr, Jungspr, Julgspr, Auggspr, Sepgspr, Octgspr, Novgspr, Decgspr])
+    console.log("Sum Cost of Goods Sold for Product Revenues: "+SumCostofGoodsSoldforProductRevenues+ "\n\n");
+    // CostofGoodsSoldforServiceRevenues 
+
+
+    var Jangssr =  ((Jansr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+    var Febgssr =  ((Febsr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+    var Margssr =  ((Marsr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+    var Aprgssr =  ((Aprsr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+    var Maygssr =  ((Maysr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Jungssr =  ((Junsr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Julgssr =  ((Julsr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+    var Auggssr =  ((Augsr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Sepgssr =  ((Sepsr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Octgssr =  ((Octsr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Novgssr =  ((Novsr*PricePerService)*CostofGoodsSoldforServiceRevenues) 
+    var Decgssr =  ((Decsr*PricePerService)*CostofGoodsSoldforServiceRevenues)
+
+    var SumCostofGoodsSoldforServiceRevenues  = formulajs.SUM([Jangssr, Febgssr, Margssr, Aprgssr, Maygssr, Jungssr, Julgssr, Auggssr, Sepgssr, Octgssr, Novgssr, Decgssr])
+    console.log("Sum Cost of Goods Sold for Service Revenues: "+SumCostofGoodsSoldforServiceRevenues+ "\n\n");
+
+    //CostofGoodsSoldforBillableHoursRevenues
+
+    var Jangsbr =  ((Janbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Febgsbr =  ((Febbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Margsbr =  ((Marbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Aprgsbr =  ((Aprbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Maygsbr =  ((Maybr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues) 
+    var Jungsbr =  ((Junbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues) 
+    var Julgsbr =  ((Julbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Auggsbr =  ((Augbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Sepgsbr =  ((Sepbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Octgsbr =  ((Octbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Novgsbr =  ((Novbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+    var Decgsbr =  ((Decbr*RatePerHour)*CostofGoodsSoldforBillableHoursRevenues)
+
+    var SumCostofGoodsSoldforBillableHoursRevenues  = formulajs.SUM([Jangsbr, Febgsbr, Margsbr, Aprgsbr, Maygsbr, Jungsbr, Julgsbr, Auggsbr, Sepgsbr, Octgsbr, Novgsbr, Decgsbr])
+    console.log("Sum Cost of Goods Sold for Billable Hour Revenues: "+SumCostofGoodsSoldforBillableHoursRevenues+ "\n\n");
+
+    //CostofGoodsSoldforSubscriptionRevenues
+
+
+    var Jangsub =  (JanSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Febgsub =  (FebSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Margsub =  (MarSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Aprgsub =  (AprSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Maygsub =  (MaySub*CostofGoodsSoldforSubscriptionRevenues)
+    var Jungsub =  (JunSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Julgsub =  (JulSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Auggsub =  (AugSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Sepgsub =  (SepSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Octgsub =  (OctSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Novgsub =  (NovSub*CostofGoodsSoldforSubscriptionRevenues)
+    var Decgsub =  (DecSub*CostofGoodsSoldforSubscriptionRevenues)
+
+    var SumCostofGoodsSoldforSubscriptionRevenues  = formulajs.SUM([Jangsub, Febgsub, Margsub, Aprgsub, Maygsub, Jungsub, Julgsub, Auggsub, Sepgsub, Octgsub, Novgsub, Decgsub])
+    console.log("Sum Cost of Goods Sold for Subscription Revenues: "+SumCostofGoodsSoldforSubscriptionRevenues+ "\n\n");
+
+
+    //? ------ VARIABLE COST ------
+
+    var CommissiononProductRevenues = 0.03;
+    var CommissiononServiceRevenues =0.02;
+    var CommissiononBillableHoursRevenues=0.01;
+    var CommissiononSubscriptionRevenues = 0.04;
+
+    // Commission for Product Revenues
+
+    var Jancpr = ((Janpr*PricePerProduct)*CommissiononProductRevenues)
+    var Febcpr = ((Febpr*PricePerProduct)*CommissiononProductRevenues)
+    var Marcpr = ((Marpr*PricePerProduct)*CommissiononProductRevenues)
+    var Aprcpr = ((Aprpr*PricePerProduct)*CommissiononProductRevenues)
+    var Maycpr = ((Maypr*PricePerProduct)*CommissiononProductRevenues)
+    var Juncpr = ((Junpr*PricePerProduct)*CommissiononProductRevenues)
+    var Julcpr = ((Julpr*PricePerProduct)*CommissiononProductRevenues)
+    var Augcpr = ((Augpr*PricePerProduct)*CommissiononProductRevenues)
+    var Sepcpr = ((Seppr*PricePerProduct)*CommissiononProductRevenues)
+    var Octcpr = ((Octpr*PricePerProduct)*CommissiononProductRevenues)
+    var Novcpr = ((Novpr*PricePerProduct)*CommissiononProductRevenues)
+    var Deccpr = ((Decpr*PricePerProduct)*CommissiononProductRevenues)
+
+
+    var SumofCommissiononProductRevenues  = formulajs.SUM([Jancpr, Febcpr, Marcpr, Aprcpr, Maycpr, Juncpr, Julcpr, Augcpr, Sepcpr, Octcpr, Novcpr, Deccpr])
+    console.log("Sum of CommissiononProductRevenues: "+ SumofCommissiononProductRevenues + "\n\n");
+
+
+    // Commission for Service Revenues
+
+    
+    var Jancsr =  ((Jansr*PricePerService)*CommissiononServiceRevenues)
+    var Febcsr =  ((Febsr*PricePerService)*CommissiononServiceRevenues)
+    var Marcsr =  ((Marsr*PricePerService)*CommissiononServiceRevenues)
+    var Aprcsr =  ((Aprsr*PricePerService)*CommissiononServiceRevenues)
+    var Maycsr =  ((Maysr*PricePerService)*CommissiononServiceRevenues) 
+    var Juncsr =  ((Junsr*PricePerService)*CommissiononServiceRevenues) 
+    var Julcsr =  ((Julsr*PricePerService)*CommissiononServiceRevenues)
+    var Augcsr =  ((Augsr*PricePerService)*CommissiononServiceRevenues) 
+    var Sepcsr =  ((Sepsr*PricePerService)*CommissiononServiceRevenues) 
+    var Octcsr =  ((Octsr*PricePerService)*CommissiononServiceRevenues) 
+    var Novcsr =  ((Novsr*PricePerService)*CommissiononServiceRevenues) 
+    var Deccsr =  ((Decsr*PricePerService)*CommissiononServiceRevenues)
+
+    var SumofCommissiononServiceRevenues  = formulajs.SUM([Jancsr, Febcsr, Marcsr, Aprcsr, Maycsr, Juncsr, Julcsr, Augcsr, Sepcsr, Octcsr, Novcsr, Deccsr])
+    console.log("Sum of Commissionon Service Revenues: "+ SumofCommissiononServiceRevenues + "\n\n");
+
+   // Commission for Billable Revenues
+
+   var Jancbr =  ((Janbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Febcbr =  ((Febbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Marcbr =  ((Marbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Aprcbr =  ((Aprbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Maycbr =  ((Maybr*RatePerHour)*CommissiononBillableHoursRevenues) 
+   var Juncbr =  ((Junbr*RatePerHour)*CommissiononBillableHoursRevenues) 
+   var Julcbr =  ((Julbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Augcbr =  ((Augbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Sepcbr =  ((Sepbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Octcbr =  ((Octbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Novcbr =  ((Novbr*RatePerHour)*CommissiononBillableHoursRevenues)
+   var Deccbr =  ((Decbr*RatePerHour)*CommissiononBillableHoursRevenues)
+
+   var SumofCommissiononBillablerevenue = formulajs.SUM([Jancbr, Febcbr, Marcbr, Aprcbr, Maycbr, Juncbr, Julcbr, Augcbr, Sepcbr, Octcbr, Novcbr, Deccbr])
+   console.log("Sum of Commissionon Billable Revenues: "+ SumofCommissiononBillablerevenue + "\n\n");
+
+   
+   // Commission for Subscription Revenues
+
+
+   var Jancsub =  (JanSub*CommissiononSubscriptionRevenues)
+   var Febcsub =  (FebSub*CommissiononSubscriptionRevenues)
+   var Marcsub =  (MarSub*CommissiononSubscriptionRevenues)
+   var Aprcsub =  (AprSub*CommissiononSubscriptionRevenues)
+   var Maycsub =  (MaySub*CommissiononSubscriptionRevenues)
+   var Juncsub =  (JunSub*CommissiononSubscriptionRevenues)
+   var Julcsub =  (JulSub*CommissiononSubscriptionRevenues)
+   var Augcsub =  (AugSub*CommissiononSubscriptionRevenues)
+   var Sepcsub =  (SepSub*CommissiononSubscriptionRevenues)
+   var Octcsub =  (OctSub*CommissiononSubscriptionRevenues)
+   var Novcsub =  (NovSub*CommissiononSubscriptionRevenues)
+   var Deccsub =  (DecSub*CommissiononSubscriptionRevenues)
+
+   var SumofCommissiononSubscriptionerevenue = formulajs.SUM([Jancsub, Febcsub, Marcsub, Aprcsub, Maycsub, Juncsub, Julcsub, Augcsub, Sepcsub, Octcsub, Novcsub, Deccsub])
+   console.log("Sum of Commissionon Subscription Revenues: "+ SumofCommissiononSubscriptionerevenue + "\n\n");
+
+   var Jantsum =  (Jancbr+Jancpr+Jancsr+Jancsub);
+   var Febtsum =  (Febcbr+Febcpr+Jancsr+Febcsub)
+   var Martsum =  (Marcbr+Marcpr+Marcsr+Marcsub)
+   var Aprtsum =  (Aprcbr+Aprcpr+Aprcsr+Aprcsub)
+   var Maytsum =  (Maycbr+Maycpr+Maycsr+Maycsub)
+   var Juntsum =  (Juncbr+Juncpr+Juncsr+Juncsub)
+   var Jultsum =  (Julcbr+Julcpr+Julcsr+Julcsub)
+   var Augtsum =  (Augcbr+Augcpr+Augcsr+Augcsub)
+   var Septsum =  (Sepcbr+Sepcpr+Sepcsr+Sepcsub)
+   var Octtsum =  (Octcbr+Octcpr+Octcsr+Octcsub)
+   var Novtsum =  (Novcbr+Novcpr+Novcsr+Novcsub)
+   var Dectsum =  (Deccbr+Deccpr+Deccsr+Deccsub)
+   
+   var TotalSumofCommissiononSubscriptionerevenue = formulajs.SUM([Jantsum, Febtsum, Martsum, Aprtsum, Maytsum, Juntsum, Jultsum, Augtsum, Septsum, Octtsum, Novtsum, Dectsum])
+   console.log("Total Sum of Commissionon Subscription Revenues: "+ TotalSumofCommissiononSubscriptionerevenue + "\n\n");
+
+
+
+
   
-  
-  // //? ------ Wage and Related Costs ------
+  //? ------ Wage and Related Costs ------
 
   var MangagementSalaries = {
     MonthlyCostsPerUnit: 6400,
@@ -367,38 +547,12 @@ router.post('/calc', function(req, res, next) {
     console.log('Overhead Costs: '+TotalOverheadCosts+"\n\n");
 
 
-  //? ------ Income ------
-
-  var RateOfCapitalExpindenture = 0.2
+  //? ------ Overhead Costs ------
 
   TotalOperatingIncome = formulajs.SUM([TotalSalesRevenue, TotalWageCosts, TotalOverheadCosts])
 
-  console.log("Total Operating Income: "+TotalOperatingIncome+"\n");
+  console.log("Total Operating Income: "+TotalOperatingIncome);
 
-  //? ------ Capex -------
-
-  var Plant = {
-    CapexPeriod: 1,
-    CapexAmount: 100000
-  }
-
-  var Property = {
-    CapexPeriod: 1,
-    CapexAmount: 1200000
-  }
-
-  var Equipment = {
-    CapexPeriod: 6,
-    CapexAmount: 23000
-  }
-
-  var Other = {
-    CapexPeriod: 2,
-    CapexAmount: 3000
-  }
-
-  var Jan = formulajs.IFERROR(formulajs.INDEX(Plant,formulajs.MATCH(1,Plant.CapexPeriod),2),0)
-  console.log(Jan);
 
   res.render('index', {
     title: 'Financial',
