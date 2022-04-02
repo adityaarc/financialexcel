@@ -629,7 +629,11 @@ router.post('/calc', function (req, res, next) {
     CapexPeriod: 1,
     RecurringPeriod: 0
   }
-  var TotalRecurringOfficeEquip 
+  var TotalRecurringOfficeEquip = 0;
+  for (let q = 1; q <= 12; q++) {
+    TotalRecurringOfficeEquip += formulajs.IF(q==RecurringOfficeEquip.CapexPeriod,RecurringOfficeEquip.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((q-RecurringOfficeEquip.CapexPeriod)/RecurringOfficeEquip.RecurringPeriod)==(q-RecurringOfficeEquip.CapexPeriod)/RecurringOfficeEquip.RecurringPeriod,RecurringOfficeEquip.CapexAmount,0),0));
+  }
+  console.log("Total Recurring Office Equip: "+TotalRecurringOfficeEquip);
 
 
   var RecurringVechiles = {
@@ -637,7 +641,11 @@ router.post('/calc', function (req, res, next) {
     CapexPeriod: 1,
     RecurringPeriod: 24
   }
-
+  var TotalRecurringVechiles = 0;
+  for (let w = 1; w <= 12; w++) {
+    TotalRecurringVechiles += formulajs.IF(w==RecurringVechiles.CapexPeriod,RecurringVechiles.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((w-RecurringVechiles.CapexPeriod)/RecurringVechiles.RecurringPeriod)==(w-RecurringVechiles.CapexPeriod)/RecurringVechiles.RecurringPeriod,RecurringVechiles.CapexAmount,0),0));
+  }
+  console.log("Total Recurring Vechiles: "+TotalRecurringVechiles);
 
 
   res.render('index', {
