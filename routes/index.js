@@ -372,8 +372,9 @@ router.post('/calc', function (req, res, next) {
   var RateOfCapitalExpindenture = 0.2
 
   TotalOperatingIncome = formulajs.SUM([TotalSalesRevenue, TotalWageCosts, TotalOverheadCosts])
-
   console.log("Total Operating Income: " + TotalOperatingIncome + "\n");
+
+  var DepreciationAmort = 0.2
 
 
 
@@ -581,40 +582,61 @@ router.post('/calc', function (req, res, next) {
     CapexPeriod: 1,
     RecurringPeriod: 7
   }
+  var TotalRecurringPlant = 0
+  for (let i = 1; i <= 12; i++) {
+    TotalRecurringPlant += formulajs.IF(i==RecurringPlant.CapexPeriod,RecurringPlant.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((i-RecurringPlant.CapexPeriod)/RecurringPlant.RecurringPeriod)==(i-RecurringPlant.CapexPeriod)/RecurringPlant.RecurringPeriod,RecurringPlant.CapexAmount,0),0));    
+  }
+  console.log("Total Recurring Plant: "+TotalRecurringPlant);
+
 
   var RecurringProperty = {
     CapexAmount: 1000,
     CapexPeriod: 3,
     RecurringPeriod: 5
   }
+  var TotalRecurringProperty = 0
+  for (let j = 1; j <= 12; j++) {
+    TotalRecurringProperty += formulajs.IF(j==RecurringProperty.CapexPeriod,RecurringProperty.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((j-RecurringProperty.CapexPeriod)/RecurringProperty.RecurringPeriod)==(j-RecurringProperty.CapexPeriod)/RecurringProperty.RecurringPeriod,RecurringProperty.CapexAmount,0),0));
+  }
+  console.log("Total Recurring Property: "+TotalRecurringProperty);
+
 
   var RecurringEquipment = {
     CapexAmount: 1000,
     CapexPeriod: 1,
     RecurringPeriod: 12
   }
+  var TotalRecurringEquipment = 0
+  for (let k = 1; k <= 12; k++) {
+    TotalRecurringEquipment += formulajs.IF(k==RecurringEquipment.CapexPeriod,RecurringEquipment.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((k-RecurringEquipment.CapexPeriod)/RecurringEquipment.RecurringPeriod)==(k-RecurringEquipment.CapexPeriod)/RecurringEquipment.RecurringPeriod,RecurringEquipment.CapexAmount,0),0));
+  }
+  console.log("Total Recurring Equipment: "+TotalRecurringEquipment);
+
 
   var RecurringITEquip = {
     CapexAmount: 3000,
     CapexPeriod: 1,
     RecurringPeriod: 6
   }
+  var TotalRecurringITEquip = 0;
+  for (let l = 1; l <= 12; l++) {
+    TotalRecurringITEquip += formulajs.IF(l==RecurringITEquip.CapexPeriod,RecurringITEquip.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((l-RecurringITEquip.CapexPeriod)/RecurringITEquip.RecurringPeriod)==(l-RecurringITEquip.CapexPeriod)/RecurringITEquip.RecurringPeriod,RecurringITEquip.CapexAmount,0),0));
+  }
+  console.log("Total Recurring IT Equip: "+TotalRecurringITEquip);
 
   var RecurringOfficeEquip = {
     CapexAmount: 900,
     CapexPeriod: 1,
     RecurringPeriod: 0
   }
+  var TotalRecurringOfficeEquip 
+
 
   var RecurringVechiles = {
     CapexAmount: 15000,
     CapexPeriod: 1,
     RecurringPeriod: 24
   }
-
-
-
-
 
 
 
