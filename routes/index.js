@@ -47,20 +47,20 @@ router.post('/calc', function (req, res, next) {
   var MonthlyServiceSales = 15;
   var SerciceSalesGrowth = 0.45;
 
-  var Dec = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyServiceSales * (1 + SerciceSalesGrowth))))
-  var Nov = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((11 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Oct = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((10 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Sep = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((9 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Aug = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((8 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Jul = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((7 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Jun = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((6 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var May = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((5 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Apr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((4 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Mar = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((3 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Feb = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((2 - 1) / 11) * (Dec - MonthlyServiceSales), 0), "")
-  var Jan = MonthlyServiceSales
+  var DecSr = formulajs.IFERROR(formulajs.ROUNDDOWN((MonthlyServiceSales * (1 + SerciceSalesGrowth))))
+  var NovSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((11 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var OctSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((10 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var SepSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((9 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var AugSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((8 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var JulSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((7 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var JunSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((6 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var MaySr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((5 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var AprSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((4 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var MarSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((3 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var FebSr = formulajs.IFERROR(formulajs.ROUNDDOWN(MonthlyServiceSales + ((2 - 1) / 11) * (DecSr - MonthlyServiceSales), 0), "")
+  var JanSr = MonthlyServiceSales
 
-  var ServiceUnitsSold = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
+  var ServiceUnitsSold = formulajs.SUM([JanSr, FebSr, MarSr, AprSr, MaySr, JunSr, JulSr, AugSr, SepSr, OctSr, NovSr, DecSr])
   var ServiceRevenues = (ServiceUnitsSold * PricePerService)
   console.log("Service Unit Sold: " + ServiceUnitsSold);
   console.log("Service Revenues: " + ServiceRevenues + "\n");
