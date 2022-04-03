@@ -228,6 +228,59 @@ router.post('/calc', function (req, res, next) {
   console.log("Total Direct Costs: " + TotalDirectCosts + "\n\n");
 
 
+
+  //? -------- Variable Costs --------
+
+
+  var CommissiononProductRevenues = 0.03;
+  var CommissiononServiceRevenues = 0.02;
+  var CommissiononBillableHoursRevenues = 0.01;
+  var CommissiononSubscriptionRevenues = 0.04;
+
+  var SumofCommissiononProductRevenues = ProductRevenue * CommissiononProductRevenues
+  console.log("Sum of Commission on Product Revenues: " + SumofCommissiononProductRevenues);
+
+  var SumofCommissiononServiceRevenues = ServiceRevenues * CommissiononServiceRevenues
+  console.log("Sum of Commission on Service Revenues: " + SumofCommissiononServiceRevenues);
+
+  var SumofCommissiononBillableRevenues = BillableHoursRevenues * CommissiononBillableHoursRevenues
+  console.log("Sum of Commission on Billable Revenues: " + SumofCommissiononBillableRevenues);
+
+  var SumofCommissiononSubscriptionRevenues = SubscriptionRevenues * CommissiononSubscriptionRevenues
+  console.log("Sum of Commission on Subscription Revenues: " + SumofCommissiononSubscriptionRevenues);
+
+  var TotalCommissionCost = formulajs.SUM([
+    SumofCommissiononProductRevenues,
+    SumofCommissiononServiceRevenues,
+    SumofCommissiononBillableRevenues,
+    SumofCommissiononSubscriptionRevenues])
+  console.log("Total Commission Cost: " + TotalCommissionCost + "\n");
+
+  // Customer Aquisition Cost
+  var CAProductRevenues = 0.02;
+  var CAServiceRevenues = 0.00;
+  var CABillableHoursRevenues = 0.30;
+  var CASubscriptionRevenues = 0.12;
+
+  var SumofCAProductRevenues = ProductRevenue * CAProductRevenues
+  console.log("Sum of CA of Product Revenues: " + SumofCAProductRevenues);
+
+  var SumofCAServiceRevenues = ServiceRevenues * CAServiceRevenues
+  console.log("Sum of CA of Service Revenues: " + SumofCAServiceRevenues);
+
+  var SumofCABillableHoursRevenues = BillableHoursRevenues * CABillableHoursRevenues
+  console.log("Sum of CA of Billable Hours Revenues: " + SumofCABillableHoursRevenues);
+
+  var SumofCASubscriptionRevenues = (CASubscriptionRevenues * NumberOfNewCustomersPerMonth * (SetUpFee + RecurringCharge)) * 12
+  console.log("Sum of CA of Subscription Revenues: " + SumofCASubscriptionRevenues);
+
+  var TotalCACosts = formulajs.SUM([
+    SumofCAProductRevenues,
+    SumofCAServiceRevenues,
+    SumofCABillableHoursRevenues,
+    SumofCASubscriptionRevenues])
+  console.log("Total Customer Acquisition Costs: " + TotalCACosts + "\n\n");
+
   //? ------ Wage and Related Costs ------
 
   var MangagementSalaries = {
