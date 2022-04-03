@@ -73,20 +73,20 @@ router.post('/calc', function (req, res, next) {
   var BillableHoursPerMonth = 45;
   var BillableHoursGrowth = 0.3;
 
-  var Dec = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth * (1 + BillableHoursGrowth), 1), "")
-  var Nov = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((11 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Oct = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((10 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Sep = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((9 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Aug = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((8 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Jul = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((7 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Jun = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((6 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var May = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((5 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Apr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((4 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Mar = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((3 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Feb = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((2 - 1) / 11) * (Dec - BillableHoursPerMonth), 1), "")
-  var Jan = BillableHoursPerMonth
+  var DecBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth * (1 + BillableHoursGrowth), 1), "")
+  var NovBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((11 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var OctBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((10 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var SepBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((9 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var AugBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((8 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var JulBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((7 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var JunBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((6 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var MayBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((5 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var AprBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((4 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var MarBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((3 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var FebBr = formulajs.IFERROR(formulajs.ROUNDDOWN(BillableHoursPerMonth + ((2 - 1) / 11) * (DecBr - BillableHoursPerMonth), 1), "")
+  var JanBr = BillableHoursPerMonth
 
-  var TotalBillableHoursPerMonth = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
+  var TotalBillableHoursPerMonth = formulajs.SUM([JanBr, FebBr, MarBr, AprBr, MayBr, JunBr, JulBr, AugBr, SepBr, OctBr, NovBr, DecBr])
   var BillableHoursRevenues = (TotalBillableHoursPerMonth * RatePerHour)
   console.log("Total Billable Hours Per Month: " + TotalBillableHoursPerMonth)
   console.log("Billable Hour Revenues: " + BillableHoursRevenues + "\n")
@@ -101,35 +101,35 @@ router.post('/calc', function (req, res, next) {
   var NumberOfNewCustomersPerMonth = 10;
   var ChurnRate = 0.3;
 
-  var Jan = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + ExistingNumberOfCustomers - (ExistingNumberOfCustomers * ChurnRate), 0)
-  var Feb = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Jan - (Jan * ChurnRate), 0)
-  var Mar = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Feb - (Feb * ChurnRate), 0)
-  var Apr = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Mar - (Mar * ChurnRate), 0)
-  var May = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Apr - (Apr * ChurnRate), 0)
-  var Jun = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + May - (May * ChurnRate), 0)
-  var Jul = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Jun - (Jun * ChurnRate), 0)
-  var Aug = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Jul - (Jul * ChurnRate), 0)
-  var Sep = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Aug - (Aug * ChurnRate), 0)
-  var Oct = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Sep - (Sep * ChurnRate), 0)
-  var Nov = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Oct - (Oct * ChurnRate), 0)
-  var Dec = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + Nov - (Nov * ChurnRate), 0)
+  var JanSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + ExistingNumberOfCustomers - (ExistingNumberOfCustomers * ChurnRate), 0)
+  var FebSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + JanSur - (JanSur * ChurnRate), 0)
+  var MarSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + FebSur - (FebSur * ChurnRate), 0)
+  var AprSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + MarSur - (MarSur * ChurnRate), 0)
+  var MaySur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + AprSur - (AprSur * ChurnRate), 0)
+  var JunSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + MaySur - (MaySur * ChurnRate), 0)
+  var JulSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + JunSur - (JunSur * ChurnRate), 0)
+  var AugSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + JulSur - (JulSur * ChurnRate), 0)
+  var SepSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + AugSur - (AugSur * ChurnRate), 0)
+  var OctSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + SepSur - (SepSur * ChurnRate), 0)
+  var NovSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + OctSur - (OctSur * ChurnRate), 0)
+  var DecSur = formulajs.ROUNDDOWN(NumberOfNewCustomersPerMonth + NovSur - (NovSur * ChurnRate), 0)
 
   //Subscription Revenue per month
-  var JanSub = (Jan * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var FebSub = (Feb * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var MarSub = (Mar * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var AprSub = (Apr * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var MaySub = (May * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var JunSub = (Jun * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var JulSub = (Jul * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var AugSub = (Aug * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var SepSub = (Sep * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var OctSub = (Oct * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var NovSub = (Nov * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
-  var DecSub = (Dec * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var JanSub = (JanSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var FebSub = (FebSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var MarSub = (MarSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var AprSub = (AprSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var MaySub = (MaySur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var JunSub = (JunSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var JulSub = (JulSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var AugSub = (AugSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var SepSub = (SepSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var OctSub = (OctSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var NovSub = (NovSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
+  var DecSub = (DecSur * RecurringCharge + NumberOfNewCustomersPerMonth * SetUpFee)
 
   var NewCustomerPerMonth = (NumberOfNewCustomersPerMonth * 12)
-  var TotalNumberOfCustomers = formulajs.SUM([Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec])
+  var TotalNumberOfCustomers = formulajs.SUM([JanSur, FebSur, MarSur, AprSur, MaySur, JunSur, JulSur, AugSur, SepSur, OctSur, NovSur, DecSur])
   var SubscriptionRevenues = formulajs.SUM([JanSub, FebSub, MarSub, AprSub, MaySub, JunSub, JulSub, AugSub, SepSub, OctSub, NovSub, DecSub])
 
   console.log("New Customer Per Month: " + NewCustomerPerMonth);
@@ -141,6 +141,8 @@ router.post('/calc', function (req, res, next) {
   console.log("Total Sales Revenue: " + TotalSalesRevenue + "\n\n");
 
 
+
+  
   //? ------ Direct Costs -------
 
   var CostofGoodsSoldforProductRevenues = 0.03;
