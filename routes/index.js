@@ -67,7 +67,7 @@ router.post('/calc', function (req, res, next) {
 
 
 
-  // //* Billable Hours Revenue
+  //* Billable Hours Revenue
   // Values from req.body.
   var RatePerHour = 150;
   var BillableHoursPerMonth = 45;
