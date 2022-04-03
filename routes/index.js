@@ -142,7 +142,7 @@ router.post('/calc', function (req, res, next) {
 
 
 
-  
+
   //? ------ Direct Costs -------
 
   var CostofGoodsSoldforProductRevenues = 0.03;
@@ -150,28 +150,85 @@ router.post('/calc', function (req, res, next) {
   var CostofGoodsSoldforBillableHoursRevenues = 0.05;
   var CostofGoodsSoldforSubscriptionRevenues = 0.06;
 
-
-  var Jangspr = ((JanPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Febgspr = ((FebPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Margspr = ((MarPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Aprgspr = ((AprPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Maygspr = ((MayPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Jungspr = ((JunPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Julgspr = ((JulPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Auggspr = ((AugPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Sepgspr = ((SepPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Octgspr = ((OctPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Novgspr = ((NovPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
-  var Decgspr = ((DecPr*PricePerProduct)*CostofGoodsSoldforProductRevenues)
+  //Cost of Goods Sold for Product Revenues
+  var Jangspr = ((JanPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Febgspr = ((FebPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Margspr = ((MarPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Aprgspr = ((AprPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Maygspr = ((MayPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Jungspr = ((JunPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Julgspr = ((JulPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Auggspr = ((AugPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Sepgspr = ((SepPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Octgspr = ((OctPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Novgspr = ((NovPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
+  var Decgspr = ((DecPr * PricePerProduct) * CostofGoodsSoldforProductRevenues)
 
   var SumCostofGoodsSoldforProductRevenues = formulajs.SUM([Jangspr, Febgspr, Margspr, Aprgspr, Maygspr, Jungspr, Julgspr, Auggspr, Sepgspr, Octgspr, Novgspr, Decgspr])
-  console.log("Sum Cost of Goods Sold for Product Revenues: "+SumCostofGoodsSoldforProductRevenues+ "\n\n");
+  console.log("Sum Cost of Goods Sold for Product Revenues: " + SumCostofGoodsSoldforProductRevenues);
+
+  // Cost of Goods Sold for Service Revenues 
+  var Jangssr = ((JanSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Febgssr = ((FebSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Margssr = ((MarSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Aprgssr = ((AprSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Maygssr = ((MaySr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Jungssr = ((JunSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Julgssr = ((JulSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Auggssr = ((AugSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Sepgssr = ((SepSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Octgssr = ((OctSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Novgssr = ((NovSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+  var Decgssr = ((DecSr * PricePerService) * CostofGoodsSoldforServiceRevenues)
+
+  var SumCostofGoodsSoldforServiceRevenues = formulajs.SUM([Jangssr, Febgssr, Margssr, Aprgssr, Maygssr, Jungssr, Julgssr, Auggssr, Sepgssr, Octgssr, Novgssr, Decgssr])
+  console.log("Sum Cost of Goods Sold for Service Revenues: " + SumCostofGoodsSoldforServiceRevenues);
 
 
+  //Cost of Goods Sold for Billable Hours Revenues
+  var Jangsbr = ((JanBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Febgsbr = ((FebBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Margsbr = ((MarBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Aprgsbr = ((AprBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Maygsbr = ((MayBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Jungsbr = ((JunBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Julgsbr = ((JulBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Auggsbr = ((AugBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Sepgsbr = ((SepBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Octgsbr = ((OctBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Novgsbr = ((NovBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+  var Decgsbr = ((DecBr * RatePerHour) * CostofGoodsSoldforBillableHoursRevenues)
+
+  var SumCostofGoodsSoldforBillableHoursRevenues = formulajs.SUM([Jangsbr, Febgsbr, Margsbr, Aprgsbr, Maygsbr, Jungsbr, Julgsbr, Auggsbr, Sepgsbr, Octgsbr, Novgsbr, Decgsbr])
+  console.log("Sum Cost of Goods Sold for Billable Hour Revenues: " + SumCostofGoodsSoldforBillableHoursRevenues);
 
 
+  //Cost of Goods Sold for Subscription Revenues
+  var Jangsub = (JanSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Febgsub = (FebSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Margsub = (MarSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Aprgsub = (AprSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Maygsub = (MaySub * CostofGoodsSoldforSubscriptionRevenues)
+  var Jungsub = (JunSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Julgsub = (JulSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Auggsub = (AugSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Sepgsub = (SepSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Octgsub = (OctSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Novgsub = (NovSub * CostofGoodsSoldforSubscriptionRevenues)
+  var Decgsub = (DecSub * CostofGoodsSoldforSubscriptionRevenues)
 
-  // //? ------ Wage and Related Costs ------
+  var SumCostofGoodsSoldforSubscriptionRevenues = formulajs.SUM([Jangsub, Febgsub, Margsub, Aprgsub, Maygsub, Jungsub, Julgsub, Auggsub, Sepgsub, Octgsub, Novgsub, Decgsub])
+  console.log("Sum Cost of Goods Sold for Subscription Revenues: " + SumCostofGoodsSoldforSubscriptionRevenues);
+
+  var TotalDirectCosts = formulajs.SUM([
+    SumCostofGoodsSoldforServiceRevenues,
+    SumCostofGoodsSoldforBillableHoursRevenues,
+    SumCostofGoodsSoldforProductRevenues,
+    SumCostofGoodsSoldforSubscriptionRevenues])
+  console.log("Total Direct Costs: " + TotalDirectCosts + "\n\n");
+
+
+  //? ------ Wage and Related Costs ------
 
   var MangagementSalaries = {
     MonthlyCostsPerUnit: 6400,
@@ -500,7 +557,7 @@ router.post('/calc', function (req, res, next) {
       break;
   }
   var TotalPropertyCapex = formulajs.SUM([JanProperty, FebProperty, MarProperty, AprProperty, MayProperty, JunProperty, JulProperty, AugProperty, SepProperty, OctProperty, NovProperty, DecProperty]);
-  
+
   switch (Equipment.CapexPeriod) {
     case 1:
       var JanEquipment = Equipment.CapexAmount
@@ -585,10 +642,10 @@ router.post('/calc', function (req, res, next) {
   }
 
   var TotalOtherCapex = formulajs.SUM([JanCapexOther, FebCapexOther, MarCapexOther, AprCapexOther, MayCapexOther, JunCapexOther, JulCapexOther, AugCapexOther, SepCapexOther, OctCapexOther, NovCapexOther, DecCapexOther]);
-  console.log("Total Plant Capex: "+TotalPlantCapex);
-  console.log("Total Property Capex: "+TotalPropertyCapex);
-  console.log("Total Equipment Capex: "+TotalEquipmentCapex);
-  console.log("Total Other Capex: "+TotalOtherCapex+"\n");
+  console.log("Total Plant Capex: " + TotalPlantCapex);
+  console.log("Total Property Capex: " + TotalPropertyCapex);
+  console.log("Total Equipment Capex: " + TotalEquipmentCapex);
+  console.log("Total Other Capex: " + TotalOtherCapex + "\n");
 
 
 
@@ -600,9 +657,9 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringPlant = 0
   for (let i = 1; i <= 12; i++) {
-    TotalRecurringPlant += formulajs.IF(i==RecurringPlant.CapexPeriod,RecurringPlant.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((i-RecurringPlant.CapexPeriod)/RecurringPlant.RecurringPeriod)==(i-RecurringPlant.CapexPeriod)/RecurringPlant.RecurringPeriod,RecurringPlant.CapexAmount,0),0));    
+    TotalRecurringPlant += formulajs.IF(i == RecurringPlant.CapexPeriod, RecurringPlant.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((i - RecurringPlant.CapexPeriod) / RecurringPlant.RecurringPeriod) == (i - RecurringPlant.CapexPeriod) / RecurringPlant.RecurringPeriod, RecurringPlant.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring Plant: "+TotalRecurringPlant);
+  console.log("Total Recurring Plant: " + TotalRecurringPlant);
 
 
   var RecurringProperty = {
@@ -612,9 +669,9 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringProperty = 0
   for (let j = 1; j <= 12; j++) {
-    TotalRecurringProperty += formulajs.IF(j==RecurringProperty.CapexPeriod,RecurringProperty.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((j-RecurringProperty.CapexPeriod)/RecurringProperty.RecurringPeriod)==(j-RecurringProperty.CapexPeriod)/RecurringProperty.RecurringPeriod,RecurringProperty.CapexAmount,0),0));
+    TotalRecurringProperty += formulajs.IF(j == RecurringProperty.CapexPeriod, RecurringProperty.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((j - RecurringProperty.CapexPeriod) / RecurringProperty.RecurringPeriod) == (j - RecurringProperty.CapexPeriod) / RecurringProperty.RecurringPeriod, RecurringProperty.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring Property: "+TotalRecurringProperty);
+  console.log("Total Recurring Property: " + TotalRecurringProperty);
 
 
   var RecurringEquipment = {
@@ -624,9 +681,9 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringEquipment = 0
   for (let k = 1; k <= 12; k++) {
-    TotalRecurringEquipment += formulajs.IF(k==RecurringEquipment.CapexPeriod,RecurringEquipment.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((k-RecurringEquipment.CapexPeriod)/RecurringEquipment.RecurringPeriod)==(k-RecurringEquipment.CapexPeriod)/RecurringEquipment.RecurringPeriod,RecurringEquipment.CapexAmount,0),0));
+    TotalRecurringEquipment += formulajs.IF(k == RecurringEquipment.CapexPeriod, RecurringEquipment.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((k - RecurringEquipment.CapexPeriod) / RecurringEquipment.RecurringPeriod) == (k - RecurringEquipment.CapexPeriod) / RecurringEquipment.RecurringPeriod, RecurringEquipment.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring Equipment: "+TotalRecurringEquipment);
+  console.log("Total Recurring Equipment: " + TotalRecurringEquipment);
 
 
   var RecurringITEquip = {
@@ -636,9 +693,9 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringITEquip = 0;
   for (let l = 1; l <= 12; l++) {
-    TotalRecurringITEquip += formulajs.IF(l==RecurringITEquip.CapexPeriod,RecurringITEquip.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((l-RecurringITEquip.CapexPeriod)/RecurringITEquip.RecurringPeriod)==(l-RecurringITEquip.CapexPeriod)/RecurringITEquip.RecurringPeriod,RecurringITEquip.CapexAmount,0),0));
+    TotalRecurringITEquip += formulajs.IF(l == RecurringITEquip.CapexPeriod, RecurringITEquip.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((l - RecurringITEquip.CapexPeriod) / RecurringITEquip.RecurringPeriod) == (l - RecurringITEquip.CapexPeriod) / RecurringITEquip.RecurringPeriod, RecurringITEquip.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring IT Equip: "+TotalRecurringITEquip);
+  console.log("Total Recurring IT Equip: " + TotalRecurringITEquip);
 
   var RecurringOfficeEquip = {
     CapexAmount: 0,
@@ -647,9 +704,9 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringOfficeEquip = 0;
   for (let q = 1; q <= 12; q++) {
-    TotalRecurringOfficeEquip += formulajs.IF(q==RecurringOfficeEquip.CapexPeriod,RecurringOfficeEquip.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((q-RecurringOfficeEquip.CapexPeriod)/RecurringOfficeEquip.RecurringPeriod)==(q-RecurringOfficeEquip.CapexPeriod)/RecurringOfficeEquip.RecurringPeriod,RecurringOfficeEquip.CapexAmount,0),0));
+    TotalRecurringOfficeEquip += formulajs.IF(q == RecurringOfficeEquip.CapexPeriod, RecurringOfficeEquip.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((q - RecurringOfficeEquip.CapexPeriod) / RecurringOfficeEquip.RecurringPeriod) == (q - RecurringOfficeEquip.CapexPeriod) / RecurringOfficeEquip.RecurringPeriod, RecurringOfficeEquip.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring Office Equip: "+TotalRecurringOfficeEquip);
+  console.log("Total Recurring Office Equip: " + TotalRecurringOfficeEquip);
 
 
   var RecurringVechiles = {
@@ -659,14 +716,14 @@ router.post('/calc', function (req, res, next) {
   }
   var TotalRecurringVechiles = 0;
   for (let w = 1; w <= 12; w++) {
-    TotalRecurringVechiles += formulajs.IF(w==RecurringVechiles.CapexPeriod,RecurringVechiles.CapexAmount,formulajs.IFERROR(formulajs.IF(formulajs.INT((w-RecurringVechiles.CapexPeriod)/RecurringVechiles.RecurringPeriod)==(w-RecurringVechiles.CapexPeriod)/RecurringVechiles.RecurringPeriod,RecurringVechiles.CapexAmount,0),0));
+    TotalRecurringVechiles += formulajs.IF(w == RecurringVechiles.CapexPeriod, RecurringVechiles.CapexAmount, formulajs.IFERROR(formulajs.IF(formulajs.INT((w - RecurringVechiles.CapexPeriod) / RecurringVechiles.RecurringPeriod) == (w - RecurringVechiles.CapexPeriod) / RecurringVechiles.RecurringPeriod, RecurringVechiles.CapexAmount, 0), 0));
   }
-  console.log("Total Recurring Vechiles: "+TotalRecurringVechiles);
+  console.log("Total Recurring Vechiles: " + TotalRecurringVechiles);
 
   var TotalCapex = formulajs.SUM([TotalOtherCapex, TotalEquipmentCapex, TotalPropertyCapex, TotalPlantCapex, TotalRecurringPlant, TotalRecurringProperty, TotalRecurringEquipment, TotalRecurringVechiles, TotalRecurringOfficeEquip, TotalRecurringITEquip])
-  console.log("Total Capex: "+TotalCapex+"\n\n");
+  console.log("Total Capex: " + TotalCapex + "\n\n");
 
-  
+
   //? ------ Income ------
 
   TotalOperatingIncome = formulajs.SUM([TotalSalesRevenue, TotalWageCosts, TotalOverheadCosts])
@@ -676,9 +733,9 @@ router.post('/calc', function (req, res, next) {
 
   var xyz = 0
   for (let e = 1; e <= 12; e++) {
-    xyz += (Utilities.MonthlyCost/12)
+    xyz += (Utilities.MonthlyCost / 12)
   }
-  var tyu = xyz*TotalCapex
+  var tyu = xyz * TotalCapex
   console.log(tyu);
 
 
