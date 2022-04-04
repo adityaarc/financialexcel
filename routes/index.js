@@ -779,19 +779,166 @@ router.post('/calc', function (req, res, next) {
 
   //? ------ Income ------
 
-  TotalOperatingIncome = formulajs.SUM([TotalSalesRevenue, TotalWageCosts, TotalOverheadCosts])
+  var TotalVariableCosts = 151616.43
+  TotalOperatingIncome = formulajs.SUM([TotalSalesRevenue, TotalDirectCosts, TotalVariableCosts, TotalSalariesAndRelatedExpenses, TotalOverheadCosts])
   console.log("Total Operating Income: " + TotalOperatingIncome + "\n");
 
   var DepreciationAmort = 0.2
 
-  var xyz = 0
-  for (let e = 1; e <= 12; e++) {
-    xyz += (Utilities.MonthlyCost / 12)
-  }
-  var tyu = xyz * TotalCapex
-  console.log(tyu);
+  var TotalDepreciationAmort = TotalCapex * (Utilities.MonthlyCost / 12)
+  console.log("Total Depreciation Amort: " + TotalDepreciationAmort + "\n\n");
 
 
+
+  //? ------- Working Capital -------
+  var RDProductRevenue = 30
+  var RDServiceRevenue = 0
+  var RDBillableRevenue = 15
+  var RDSubscriptionRevenue = 30
+
+  var SumRDProductRevenue = (ProductRevenue * RDProductRevenue) / 365
+  console.log("Sum of Receivable days for Product Revenue: " + SumRDProductRevenue);
+
+  var SumRDServiceRevenue = (ServiceRevenues * RDServiceRevenue) / 365
+  console.log("Sum of Receivable days for Service Revenue: " + SumRDServiceRevenue);
+
+  var SumRDBillableRevenue = (BillableHoursRevenues * RDBillableRevenue) / 365
+  console.log("Sum of Receivable days for Billable Hours Revenue: " + SumRDBillableRevenue);
+
+  var SumRDSubscriptionRevenue = (SubscriptionRevenues * RDSubscriptionRevenue) / 365
+  console.log("Sum of Receivable days for Subscription Hours Revenue: " + SumRDSubscriptionRevenue);
+
+  var TotalAccountsReceivable = formulajs.SUM([
+    SumRDProductRevenue,
+    SumRDServiceRevenue,
+    SumRDBillableRevenue,
+    SumRDSubscriptionRevenue
+  ])
+  console.log("Total Accounts Receivable: " + TotalAccountsReceivable + "\n");
+
+
+  var PercentProductSales = 0.3
+
+  var CurrentInventory = formulajs.IF(formulajs.SUM([TotalRecurringProperty]) == 0, "", formulajs.SUM([TotalRecurringProperty]))
+  console.log("Current Inventory: " + CurrentInventory);
+
+  var TotalInventory = RecurringProperty.CapexPeriod * ProductRevenue
+  console.log("Total Inventory: " + TotalInventory + "\n");
+
+
+  var PDCProductRevenue = 14
+  var SumPDCProductRevenue = (SumofCommissiononProductRevenues * PDCProductRevenue) / 365
+  console.log("Payable Days for Commission on Product Revenue: " + SumPDCProductRevenue);
+
+  var PDCServiceRevenue = 14
+  var SumPDCServiceRevenue = (SumofCommissiononServiceRevenues * PDCServiceRevenue) / 365
+  console.log("Payable Days for Commission on Service Revenue: " + SumPDCServiceRevenue);
+
+  var PDCBillableHoursRevenue = 14
+  var SumPDCBillableHoursRevenue = (SumofCommissiononBillableRevenues * PDCBillableHoursRevenue) / 365
+  console.log("Payable Days for Commission on Billable Hours Revenue: " + SumPDCBillableHoursRevenue);
+
+  var PDCSubscriptionRevenue = 14
+  var SumPDCSubscriptionRevenue = (SumofCommissiononSubscriptionRevenues * PDCSubscriptionRevenue) / 365
+  console.log("Payable Days for Commission on Subscription Revenue: " + SumPDCSubscriptionRevenue);
+
+
+  var SMProductRevenueLine = 2100   //! Demo Variable for Variable Cost Section
+  var PDSMEProductRevenueLine = 30
+  var SumPDSMEProductRevenueLine = (SMProductRevenueLine * PDSMEProductRevenueLine) / 365
+  console.log("Payable Days for S&M Expenses for Product Revenue Line: " + SumPDSMEProductRevenueLine);
+
+  var SMServiceRevenueLine = 450  //! Demo Variable for Variable Cost Section
+  var PDSMEServiceRevenueLine = 30
+  var SumPDSMEServiceRevenueLine = (SMServiceRevenueLine * PDSMEServiceRevenueLine) / 365
+  console.log("Payable Days for S&M Expenses for Service Revenue Line: " + SumPDSMEServiceRevenueLine);
+
+  var SMBillableHoursRevenueLine = 180  //! Demo Variable for Variable Cost Section
+  var PDSMEBillableRevenueLine = 0
+  var SumPDSMEBillableRevenueLine = (SMBillableHoursRevenueLine * PDSMEBillableRevenueLine) / 365
+  console.log("Payable Days for S&M Expenses for Billable Hours Revenue Line: " + SumPDSMEBillableRevenueLine);
+
+  var SMSubscriptionRevenueLine = 4000  //! Demo Variable for Variable Cost Section
+  var PDSMESubscriptionRevenueLine = 14
+  var SumPDSMESubscriptionRevenueLine = (SMSubscriptionRevenueLine * PDSMESubscriptionRevenueLine) / 365
+  console.log("Payable Days for S&M Expenses for Subscription Revenue Line: " + SumPDSMESubscriptionRevenueLine);
+
+  var PDAdvertisingCampaigns = 12
+  var SumPDAdvertisingCampaigns = (TotalAdvertisingCampaigns * PDAdvertisingCampaigns) / 365
+  console.log("Payable Days for Advertising Campaigns: " + SumPDAdvertisingCampaigns);
+  
+  var PDCarTruckExpenses = 12
+  var SumPDCarTruckExpenses = (TotalCarAndTruckExpenses * PDCarTruckExpenses) / 365
+  console.log("Payable Days for Car and Truck Expenses: " + SumPDCarTruckExpenses);
+  
+  var PDBankMerchantFees = 12
+  var SumPDBankMerchantFees = (TotalBankMerchantFees * PDBankMerchantFees) / 365
+  console.log("Payable Days for Bank and Merchant Fees: " + SumPDBankMerchantFees);
+  
+  var PDConferenceSeminars = 12
+  var SumPDConferenceSeminars = (TotalConferenceSeminars * PDConferenceSeminars) / 365
+  console.log("Payable Days for Conference Seminars: " + SumPDConferenceSeminars);
+  
+  var PDDuesSubscription = 12
+  var SumPDDuesSubscription = (TotalDuesSubscription * PDDuesSubscription) / 365
+  console.log("Payable Days for Dues and Subscription: " + SumPDDuesSubscription);
+  
+  var PDMiscellaneous = 12
+  var SumPDMiscellaneous = (TotalMiscellaneous * PDMiscellaneous) / 365
+  console.log("Payable Days for Miscellaneous: " + SumPDMiscellaneous);
+  
+  var PDTotalInsurance = 12
+  var SumPDTotalInsurance = (TotalInsurance * PDTotalInsurance) / 365
+  console.log("Payable Days for Insurance: " + SumPDTotalInsurance);
+  
+  var PDTotalLicensesFeesPermits = 12
+  var SumPDTotalLicensesFeesPermits = (TotalLicensesFeesPermits * PDTotalLicensesFeesPermits) / 365
+  console.log("Payable Days for Licenses Fees Permits: " + SumPDTotalLicensesFeesPermits);
+  
+  var PDTotalLegalProfessionalFees = 12
+  var SumPDTotalLegalProfessionalFees = (TotalLegalProfessionalFees * PDTotalLegalProfessionalFees) / 365
+  console.log("Payable Days for Legal Professional Fees: " + SumPDTotalLegalProfessionalFees);
+  
+  var PDTotalOfficeExpensesSupplies = 12
+  var SumPDTotalOfficeExpensesSupplies = (TotalOfficeExpensesSupplies * PDTotalOfficeExpensesSupplies) / 365
+  console.log("Payable Days for Office Expenses Supplies: " + SumPDTotalOfficeExpensesSupplies);
+  
+  var PDTotalPostageDelivery = 12
+  var SumPDTotalPostageDelivery = (TotalPostageDelivery * PDTotalPostageDelivery) / 365
+  console.log("Payable Days for Postage Delivery: " + SumPDTotalPostageDelivery);
+  
+  var PDTotalRent = 12
+  var SumPDTotalRent = (TotalRent * PDTotalRent) / 365
+  console.log("Payable Days for Rent: " + SumPDTotalRent);
+  
+  var PDTotalRentsOfVehiclesEquipment = 12
+  var SumPDTotalRentsOfVehiclesEquipment = (TotalRentsOfVehiclesEquipment * PDTotalRentsOfVehiclesEquipment) / 365
+  console.log("Payable Days for Rents Of Vehicles Equipment: " + SumPDTotalRentsOfVehiclesEquipment);
+  
+  var PDTotalTaxesOther = 12
+  var SumPDTotalTaxesOther = (TotalTaxesOther * PDTotalTaxesOther) / 365
+  console.log("Payable Days for Taxes Other: " + SumPDTotalTaxesOther);
+  
+  var PDTotalTelephoneCommunication = 12
+  var SumPDTotalTelephoneCommunication = (TotalTelephoneCommunication * PDTotalTelephoneCommunication) / 365
+  console.log("Payable Days for Telephone Communication: " + SumPDTotalTelephoneCommunication);
+  
+  var PDTotalTravel = 12
+  var SumPDTotalTravel = (TotalTravel * PDTotalTravel) / 365
+  console.log("Payable Days for Travel: " + SumPDTotalTravel);
+  
+  var PDTotalITService = 12
+  var SumPDTotalITService = (TotalITService * PDTotalITService) / 365
+  console.log("Payable Days for  IT Service: " + SumPDTotalITService);
+  
+  var PDTotalUtilities = 12
+  var SumPDTotalUtilities = (TotalUtilities * PDTotalUtilities) / 365
+  console.log("Payable Days for  Utilities: " + SumPDTotalUtilities);
+  
+  var PDTotalOthersga = 12
+  var SumPDTotalOthersga = (TotalOthersga * PDTotalOthersga) / 365
+  console.log("Payable Days for Others(G&A): " + SumPDTotalOthersga);
+  
   res.render('index', {
     title: 'Financial',
     ProductUnitSold: ProductUnitSold,
