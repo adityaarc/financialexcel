@@ -280,6 +280,142 @@ router.post('/calc', function (req, res, next) {
     SumofCABillableHoursRevenues,
     SumofCASubscriptionRevenues])
   console.log("Total Customer Acquisition Costs: " + TotalCACosts + "\n\n");
+  
+  
+
+         //---------------------------------
+        //   Sales and Marketing Expense    |
+       //-----------------------------------
+      
+
+       //SME of Product Revenue
+
+       var smepr_start =6;
+       var smepr_end =12;
+
+       var Jansmepr = ((smepr_start<=1)&&(smepr_end>=1))?300:0;
+       var Febsmepr = ((smepr_start<=2)&&(smepr_end>=2))?300:0;
+       var Marsmepr = ((smepr_start<=3)&&(smepr_end>=3))?300:0;
+       var Aprsmepr = ((smepr_start<=4)&&(smepr_end>=4))?300:0;
+       var Maysmepr = ((smepr_start<=5)&&(smepr_end>=5))?300:0;
+       var Junsmepr = ((smepr_start<=6)&&(smepr_end>=6))?300:0;
+       var Julsmepr = ((smepr_start<=7)&&(smepr_end>=7))?300:0;
+       var Augsmepr = ((smepr_start<=8)&&(smepr_end>=8))?300:0;
+       var Sepsmepr = ((smepr_start<=9)&&(smepr_end>=9))?300:0;
+       var Octsmepr = ((smepr_start<=10)&&(smepr_end>=10))?300:0;
+       var Novsmepr = ((smepr_start<=11)&&(smepr_end>=11))?300:0;
+       var Decsmepr = ((smepr_start<=12)&&(smepr_end>=12))?300:0;
+
+
+       var SMEPR = formulajs.SUM([Jansmepr, Febsmepr, Marsmepr, Aprsmepr, Maysmepr, Junsmepr, Julsmepr, Augsmepr, Sepsmepr, Octsmepr, Novsmepr, Decsmepr])
+       console.log("Total Sum of Sales Marketing Expense of product revenue : "+ SMEPR + "\n\n");
+
+       //SME of Service Revenue
+      
+       var smesr_start = 3;
+       var smesr_end = 5;
+
+       var Jansmesr = ((smesr_start<=1)&&(smesr_end>=1))?150:0;
+       var Febsmesr = ((smesr_start<=2)&&(smesr_end>=2))?150:0;
+       var Marsmesr = ((smesr_start<=3)&&(smesr_end>=3))?150:0;
+       var Aprsmesr = ((smesr_start<=4)&&(smesr_end>=4))?150:0;
+       var Maysmesr = ((smesr_start<=5)&&(smesr_end>=5))?150:0;
+       var Junsmesr = ((smesr_start<=6)&&(smesr_end>=6))?150:0;
+       var Julsmesr = ((smesr_start<=7)&&(smesr_end>=7))?150:0;
+       var Augsmesr = ((smesr_start<=8)&&(smesr_end>=8))?150:0;
+       var Sepsmesr = ((smesr_start<=9)&&(smesr_end>=9))?150:0;
+       var Octsmesr = ((smesr_start<=10)&&(smesr_end>=10))?150:0;
+       var Novsmesr = ((smesr_start<=11)&&(smesr_end>=11))?150:0;
+       var Decsmesr = ((smesr_start<=12)&&(smesr_end>=12))?150:0;
+
+
+       var SMESR = formulajs.SUM([Jansmesr, Febsmesr, Marsmesr, Aprsmesr, Maysmesr, Junsmesr, Julsmesr, Augsmesr, Sepsmesr, Octsmesr, Novsmesr, Decsmesr])
+       console.log("Total Sum of Sales Marketing Expense of Service revenue : "+ SMESR + "\n\n");
+
+      //SME of Billaable Hours Revenue
+
+       var smebr_start = 4;
+       var smebr_end = 45;
+       
+       var Jansmebr = ((smebr_start<=1)&&(smebr_end>=1))?20:0;
+       var Febsmebr = ((smebr_start<=2)&&(smebr_end>=2))?20:0;
+       var Marsmebr = ((smebr_start<=3)&&(smebr_end>=3))?20:0;
+       var Aprsmebr = ((smebr_start<=4)&&(smebr_end>=4))?20:0;
+       var Maysmebr = ((smebr_start<=5)&&(smebr_end>=5))?20:0;
+       var Junsmebr = ((smebr_start<=6)&&(smebr_end>=6))?20:0;
+       var Julsmebr = ((smebr_start<=7)&&(smebr_end>=7))?20:0;
+       var Augsmebr = ((smebr_start<=8)&&(smebr_end>=8))?20:0;
+       var Sepsmebr = ((smebr_start<=9)&&(smebr_end>=9))?20:0;
+       var Octsmebr = ((smebr_start<=10)&&(smebr_end>=10))?20:0;
+       var Novsmebr = ((smebr_start<=11)&&(smebr_end>=11))?20:0;
+       var Decsmebr = ((smebr_start<=12)&&(smebr_end>=12))?20:0;
+
+
+       var SMEBR = formulajs.SUM([Jansmebr, Febsmebr, Marsmebr, Aprsmebr, Maysmebr, Junsmebr, Julsmebr, Augsmebr, Sepsmebr, Octsmebr, Novsmebr, Decsmebr])
+       console.log("Total Sum of Sales Marketing Expense of Billable hour revenue revenue : "+ SMEBR + "\n\n");
+
+       
+      //SME of Subscription Revenue
+
+       var smesubr_start = 3;
+       var smesubr_end = 27;
+       
+       var Jansmesubr = ((smesubr_start<=1)&&(smesubr_end>=1))?400:0;
+       var Febsmesubr = ((smesubr_start<=2)&&(smesubr_end>=2))?400:0;
+       var Marsmesubr = ((smesubr_start<=3)&&(smesubr_end>=3))?400:0;
+       var Aprsmesubr = ((smesubr_start<=4)&&(smesubr_end>=4))?400:0;
+       var Maysmesubr = ((smesubr_start<=5)&&(smesubr_end>=5))?400:0;
+       var Junsmesubr = ((smesubr_start<=6)&&(smesubr_end>=6))?400:0;
+       var Julsmesubr = ((smesubr_start<=7)&&(smesubr_end>=7))?400:0;
+       var Augsmesubr = ((smesubr_start<=8)&&(smesubr_end>=8))?400:0;
+       var Sepsmesubr = ((smesubr_start<=9)&&(smesubr_end>=9))?400:0;
+       var Octsmesubr = ((smesubr_start<=10)&&(smesubr_end>=10))?400:0;
+       var Novsmesubr = ((smesubr_start<=11)&&(smesubr_end>=11))?400:0;
+       var Decsmesubr = ((smesubr_start<=12)&&(smesubr_end>=12))?400:0;
+
+
+       var SMESUBR = formulajs.SUM([Jansmesubr, Febsmesubr, Marsmesubr, Aprsmesubr, Maysmesubr, Junsmesubr, Julsmesubr, Augsmesubr, Sepsmesubr, Octsmesubr, Novsmesubr, Decsmesubr])
+       console.log("Total Sum of Sales Marketing Expense of Subscription revenue : "+ SMESUBR + "\n\n");
+
+
+       //Total Sum of SME
+
+        var Jantsme =  (Jansmepr+Jansmesr+Jansmebr+Jansmesubr)
+        var Febtsme =  (Febsmepr+Febsmesr+Jansmebr+Febsmesubr)
+        var Martsme =  (Marsmepr+Marsmesr+Marsmebr+Marsmesubr)
+        var Aprtsme =  (Aprsmepr+Aprsmesr+Aprsmebr+Aprsmesubr)
+        var Maytsme =  (Maysmepr+Maysmesr+Maysmebr+Maysmesubr)
+        var Juntsme =  (Junsmepr+Junsmesr+Junsmebr+Junsmesubr)
+        var Jultsme =  (Julsmepr+Julsmesr+Julsmebr+Julsmesubr)
+        var Augtsme =  (Augsmepr+Augsmesr+Augsmebr+Augsmesubr)
+        var Septsme =  (Sepsmepr+Sepsmesr+Sepsmebr+Sepsmesubr)
+        var Octtsme =  (Octsmepr+Octsmesr+Octsmebr+Octsmesubr)
+        var Novtsme =  (Novsmepr+Novsmesr+Novsmebr+Novsmesubr)
+        var Dectsme =  (Decsmepr+Decsmesr+Decsmebr+Decsmesubr)
+
+       
+        var TOTSME = formulajs.SUM([Jantsme, Febtsme, Martsme, Aprtsme, Maytsme, Juntsme, Jultsme, Augtsme, Septsme, Octtsme, Novtsme, Dectsme])
+        console.log("Total Sum of Sales Marketing Expense  : "+ TOTSME + "\n\n");
+ 
+           //-------------------------------------------
+          //   OTHERS  Sales and Marketing Expense    ||
+         //--------------------------------------------
+
+
+         var Merchantfees = 0.034;
+         var Commissionexpense =  0.05;
+
+         
+         var TotalMerchantFee = TotalSalesRevenue*Merchantfees;
+         console.log("Total Merchant Fees  : "+ TotalMerchantFee + "\n\n");
+
+
+         var TotalCommissionExpense = Commissionexpense*TotalSalesRevenue;
+         console.log("Total Commisssion Expense : "+ TotalMerchantFee + "\n\n");
+
+
+         var TotalSalesandMarketingFee = TotalCommissionExpense+TotalMerchantFee;
+         console.log("Total Sales and Marketing Expense : "+ TotalSalesandMarketingFee + "\n\n");
 
   //? ------ Wage and Related Costs ------
 
